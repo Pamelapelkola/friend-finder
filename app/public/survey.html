@@ -241,7 +241,7 @@
     </div>
   </form>
 
-  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary submit">Submit</button>
   </form>
 
   <!-- Modal goes here -->
@@ -264,7 +264,64 @@
     </div>
   </div>
   <script type="text/javascript">
-  
+  $(document).on('click', '.submit', function(){
+  alert("click")
+  event.preventDefault();
+  let currentURL = window.location.origin
+      let questArray = [];
+      for (i = 0; i < 10; i++)
+        let answer = parseInt($('#question-' + i).val())
+      console.log(answer);
+      questArray.push(answer);
+
+      let newFriend = {
+        name: $("#user-name").val().trim(),
+        photo: $("#image-1").val().trim(),
+        scores: questArray,
+
+      }
+
+
+
+      // Ajax request and initiate modal
+    
+
+      $.ajax({
+        type: "POST",
+        url: currentURL + "/api/friends",
+        data: JSON.stringify(newFriend),
+        contentType: 'application/json'
+          .then(function (res, err) {
+            if (res) {
+              console.log(res);
+              alert("Submitted")
+            } else {
+              alert("try again")
+            }
+
+
+            $("#name-input").val("")
+            $("#image-1").val("")
+            $("#question-1").val("1")
+            $("#question-2").val("1")
+            $("#question-3").val("1")
+            $("#question-4").val("1")
+            $("#question-5").val("1")
+            $("#question-6").val("1")
+            $("#question-7").val("1")
+            $("#question-8").val("1")
+            $("#question-9").val("1")
+            $("#question-10").val("1")
+
+
+          }).done(data, function(){
+            $("#match-name").text(data.name);
+            $("#match-img").attr("src", data.photo);
+            $("#results-modal").modal("toggle");
+          })
+        })
+      })
+    
   </script>
 
 </body>
