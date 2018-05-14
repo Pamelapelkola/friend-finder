@@ -1,1 +1,17 @@
-//You need routes here app.get and hint path join, params .json
+
+var path = require("path");
+
+const bodyParser = require("body-parser")
+// ===============================================================================
+// ROUTING
+// ===============================================================================
+
+module.exports = (app)=>{
+  app.get("/survey", (req, res)=>{
+    res.sendFile(path.join(__dirname, "../public/survey.html"));
+  });
+
+  app.use((req, res)=> {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+  });
+}

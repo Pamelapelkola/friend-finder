@@ -6,10 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Document</title>
+    <title>FriendFinder</title>
+    <style>
+        body{
+            margin: 5%;
+        }
+    #links a
+{
+    margin: 0;
+    padding: 0;
+}
+
+#links a
+{
+    list-style-type: none;
+    display: inline;
+}
+
+#links a:not(:first-child):before {
+    content: " | ";
+}
+.glyphicon {
+    font-size: 50px;
+    color: red;
+}
+</style>
 </head>
 <body>
     <!-- Home page goes here -->
+    <div class="jumbotron">
+        <h1 class="text-center"> <span class="glyphicon glyphicon-heart"></span>Friend Finder</h1>
+        <strong><p class ="text-center">Find compatable singles in your area, just answer a brief survey!</p></strong>
+
+        <p>
+            <a class="btn btn-primary btn-lg" href="/survey" role="button"><span class="glyphicon glyphicon-search"></span> Get Started!</a>
+        </p> 
+    </div>   
+    <div id="links">
+        <a class="nav-link" href="/api/friends">API Table></a>
+        <a href="https://github.com/Pamelapelkola/friend-finder.git">Git Repo</a>
+    </div>
+       
     
 
 </body>
